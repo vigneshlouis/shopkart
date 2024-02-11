@@ -1,0 +1,32 @@
+{%extends 'shop/layouts/main.html'%}
+{%block title%}
+SelectSilks&Readymades|online shopping
+{%endblock title%}
+{%block content%}
+<section class="bg-light py-4 my-5">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="mb-3">{{category_name}}</h4>
+            <hr style="border-color: black;">
+        </div>
+   
+{%for item in products%}
+    <div class="col-md-4 col-lg-3 my-3">
+        <div class="card my-5 h-100">
+            <img src="{{item.product_image.url}}" class="card-image-top"style="height: 200px;">
+            <a href="{% url 'collections' category_name item.name%}">
+            <div class="card-body">
+                <h4 class="card-tite">{{item.name}}</h4>
+                <p class="card-text">
+                 <span class="float-start old_price"> <s>Rs. {{item.original_price}}</s></span> 
+                  <span class="float-end new_price mb-2"> Rs. {{item.selling_price }}</span> 
+                </p>
+                
+            </div></a>
+        </div>
+    </div>{%endfor%}
+</div> </div>
+</section>
+
+{%endblock content%}
